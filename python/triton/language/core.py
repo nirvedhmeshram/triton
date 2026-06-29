@@ -709,6 +709,9 @@ class pointer_type(dtype):
             return False
         return self.element_ty == other.element_ty and self.address_space == other.address_space and self.const == other.const
 
+    def __hash__(self):
+        return hash((self.name, self.element_ty, self.address_space, self.const))
+
     @property
     def scalar(self):
         return self
